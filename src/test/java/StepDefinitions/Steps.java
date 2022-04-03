@@ -56,11 +56,30 @@ public class Steps {
 
     @And("^fill out and save form with correct values (.*) (.*) (.*) (.*) (.*) (.*)$")
     public void fillOutAndSaveForm(String alias, String address, String city, String postcode, String country, String phone) {
-        
+        WebElement aliasBox = driver.findElement(By.name("alias"));
+        aliasBox.sendKeys(alias);
+
+        WebElement addressBox = driver.findElement(By.name("address1"));
+        addressBox.sendKeys(address);
+
+        WebElement cityBox = driver.findElement(By.name("city"));
+        cityBox.sendKeys(city);
+
+        WebElement postcodeBox = driver.findElement(By.name("postcode"));
+        postcodeBox.sendKeys(postcode);
+
+        WebElement countryBox = driver.findElement(By.name("id_country"));
+        countryBox.sendKeys(country);
+
+        WebElement phoneBox = driver.findElement(By.name("phone"));
+        phoneBox.sendKeys(phone);
     }
 
 
     @Then("Address is saved")
     public void addressIsSaved() {
+        WebElement submitButton = driver.findElement(By.name("submitAddress"));
+        submitButton.submit();
     }
 }
+
